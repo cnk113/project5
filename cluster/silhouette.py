@@ -33,7 +33,7 @@ class Silhouette:
             inter_dist = np.ones(np.max(y))*np.inf
             for j in range(np.max(y)):
                 if j != y[j]:
-                    inter_dist[j] = np.sum(inter_dist[i,y==j])/np.sum(y==j)
+                    inter_dist[j] = np.sum(dist[i,y==j])/np.sum(y==j)
             pairwise_inter_dist = np.min(inter_dist)
             mat[i] = (pairwise_inter_dist-pairwise_intra_dist)/np.max([pairwise_intra_dist, pairwise_inter_dist])
         return mat

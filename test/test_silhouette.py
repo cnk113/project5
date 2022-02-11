@@ -5,7 +5,7 @@ import numpy as np
 
 def test_silhouette_init():
     sil = Silhouette()
-    assert sil._metrix == "euclidean"
+    assert sil._metric == "euclidean"
 
 
 def test_silhouette_score():
@@ -30,4 +30,4 @@ def test_silhouette_score():
     sil = Silhouette()
     score = sil.score(data,lab)
     score2 = sil.score(data,lab2)
-    assert score > score2
+    assert np.nansum(score) > np.nansum(score2)
