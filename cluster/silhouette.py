@@ -25,7 +25,7 @@ class Silhouette:
             np.ndarray
                 a 1D array with the silhouette scores for each of the observations in `X`
         """
-        mat = np.zeroes(X.shape[0])
+        mat = np.zeros(X.shape[0])
         dist = cdist(X,X,self._metric)
         for i in range(X.shape[0]):
             intra_dist =  dist[i, y == y[i]]
@@ -33,7 +33,7 @@ class Silhouette:
             inter_dist = np.ones(np.max(y))*np.inf
             for j in range(np.max(y)):
                 if j != y[j]:
-                    inter_dist[j] = np.sum(inter_dist[j,y==j])/np.sum(y==j)
+                    inter_dist[j] = np.sum(inter_dist[i,y==j])/np.sum(y==j)
             pairwise_inter_dist = np.min(inter_dist)
             mat[i] = (pairwise_inter_dist-pairwise_intra_dist)/np.max([pairwise_intra_dist, pairwise_inter_dist])
         return mat

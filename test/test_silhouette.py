@@ -27,7 +27,7 @@ def test_silhouette_score():
                  [40,41]])
     lab = np.array([0,0,0,0,1,1,1,1,2,2,2,2,2])
     lab2 = np.array([0,0,0,0,0,0,0,1,2,2,2,2,2])
-    sil = silhouette()
+    sil = Silhouette()
     score = sil.score(data,lab)
     score2 = sil.score(data,lab2)
     assert score > score2
